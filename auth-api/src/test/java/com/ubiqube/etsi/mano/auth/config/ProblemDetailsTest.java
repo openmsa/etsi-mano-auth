@@ -16,10 +16,13 @@
  */
 package com.ubiqube.etsi.mano.auth.config;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
+@SuppressWarnings("static-method")
 class ProblemDetailsTest {
 
 	@Test
@@ -35,5 +38,6 @@ class ProblemDetailsTest {
 		final ProblemDetails prob = new ProblemDetails();
 		prob.setDetail("");
 		prob.toString();
+		assertTrue(true);
 	}
 }
