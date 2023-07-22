@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-pom</artifactId>
-		<version>3.0.0</version>
+		<version>3.1.0-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ubiqube.mano.auth</groupId>
@@ -21,7 +21,7 @@
 	</modules>
 	<scm>
 		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-auth.git</developerConnection>
-		<tag>mano-auth-aggregator-3.0.0</tag>
+		<tag>HEAD</tag>
 	</scm>
 	<properties>
 		<version.mano-spring-properties>3.0.0</version.mano-spring-properties>
