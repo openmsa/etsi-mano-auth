@@ -31,7 +31,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme.Type;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Service

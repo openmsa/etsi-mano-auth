@@ -29,7 +29,7 @@ import com.ubiqube.etsi.mano.auth.cert.common.CertUtils;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class UserDetailSsl implements AuthenticationUserDetailsService<PreAuthenticatedAuthenticationToken> {

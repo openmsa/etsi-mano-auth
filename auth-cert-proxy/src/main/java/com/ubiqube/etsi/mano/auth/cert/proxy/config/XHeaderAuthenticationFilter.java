@@ -52,7 +52,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class XHeaderAuthenticationFilter extends OncePerRequestFilter {

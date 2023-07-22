@@ -35,7 +35,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Landing JSON page in case of login error.
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 @Service

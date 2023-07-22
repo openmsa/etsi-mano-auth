@@ -31,7 +31,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * Valid any user. Because later we will use the current user against the MSA
  * REST API.
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class PassthroughUserProvider extends AbstractUserDetailsAuthenticationProvider {

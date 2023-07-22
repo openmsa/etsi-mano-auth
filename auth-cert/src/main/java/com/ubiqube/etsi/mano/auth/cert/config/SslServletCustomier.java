@@ -26,7 +26,7 @@ import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerF
 /**
  * Set our customized provider. Add Component on it to enable it.
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class SslServletCustomier implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {

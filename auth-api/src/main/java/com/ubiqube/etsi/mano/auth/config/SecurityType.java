@@ -18,7 +18,7 @@ package com.ubiqube.etsi.mano.auth.config;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public enum SecurityType {

@@ -27,7 +27,7 @@ import org.springframework.boot.ssl.SslStoreBundle;
 /**
  * This provider can load data from anywhere.
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public class ManoSslStoreProvider implements SslBundle {

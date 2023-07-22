@@ -4,12 +4,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.ubiqube.mano</groupId>
-		<artifactId>mano-super-pom</artifactId>
+		<groupId>com.ubiqube.mano.auth</groupId>
+		<artifactId>mano-auth-aggregator</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.ubiqube.mano.auth</groupId>
 	<artifactId>auth-keycloak</artifactId>
 	<name>auth-keycloak</name>
 	<description>ETSI MANO commons interface.</description>

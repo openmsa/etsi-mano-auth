@@ -33,7 +33,7 @@ import com.ubiqube.etsi.mano.auth.AuthException;
 
 /**
  *
- * @author Olivier Vignaud <ovi@ubiqube.com>
+ * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
 public final class CertUtils {
