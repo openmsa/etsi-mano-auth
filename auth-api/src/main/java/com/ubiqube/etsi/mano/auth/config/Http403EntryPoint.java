@@ -48,7 +48,7 @@ public class Http403EntryPoint implements AuthenticationEntryPoint {
 	/**
 	 * Constructor
 	 *
-	 * @param _mapper JSON Object mapper.
+	 * @param mapper JSON Object mapper.
 	 */
 	public Http403EntryPoint(final ObjectMapper mapper) {
 		this.mapper = mapper;
