@@ -33,6 +33,7 @@ import org.springframework.security.config.annotation.web.configurers.CsrfConfig
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 
 import com.ubiqube.etsi.mano.auth.AuthException;
+import com.ubiqube.etsi.mano.auth.RequestMatcherBuilder;
 import com.ubiqube.etsi.mano.config.TestSecutiryConfig;
 
 @ExtendWith(MockitoExtension.class)
@@ -49,6 +50,8 @@ class WebSecurityConfigTest {
 	private HeadersConfigurer<HttpSecurity>.FrameOptionsConfig foc;
 	@Mock
 	private CsrfConfigurer<HttpSecurity> csrf;
+	@Mock
+	private RequestMatcherBuilder mvc;
 
 	@Test
 	void testCsrf() throws Exception {
@@ -64,7 +67,7 @@ class WebSecurityConfigTest {
 		when(http.authorizeHttpRequests(authorizeHttpRequestsCustomizer.capture())).thenReturn(http);
 		when(amrmr.requestMatchers(anyString())).thenReturn(au);
 		when(au.permitAll()).thenReturn(amrmr);
-		wc.configure(http);
+		wc.configure(http, mvc);
 		when(amrmr.anyRequest()).thenReturn(au);
 		cap01.getValue().customize(csrf);
 		final ArgumentCaptor<Customizer<HeadersConfigurer<HttpSecurity>.FrameOptionsConfig>> cap02 = ArgumentCaptor.forClass(Customizer.class);
@@ -82,7 +85,7 @@ class WebSecurityConfigTest {
 		final WebSecurityConfig wc = new WebSecurityConfig(sc);
 		final ArgumentCaptor<Customizer<CsrfConfigurer<HttpSecurity>>> cap01 = ArgumentCaptor.forClass(Customizer.class);
 		when(http.csrf(cap01.capture())).thenThrow(Exception.class);
-		assertThrows(AuthException.class, () -> wc.configure(http));
+		assertThrows(AuthException.class, () -> wc.configure(http, mvc));
 
 	}
 }

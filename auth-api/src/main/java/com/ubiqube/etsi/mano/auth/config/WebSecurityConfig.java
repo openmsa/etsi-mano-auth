@@ -23,6 +23,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.ubiqube.etsi.mano.auth.AuthException;
+import com.ubiqube.etsi.mano.auth.RequestMatcherBuilder;
 
 @Configuration
 @EnableWebSecurity
@@ -38,24 +39,14 @@ public class WebSecurityConfig {
 	 * All request must be authenticated, No login page.
 	 */
 	@Bean
-	SecurityFilterChain configure(final HttpSecurity http) {
+	SecurityFilterChain configure(final HttpSecurity http, final RequestMatcherBuilder mvc) {
 		try {
 			http.headers(headers -> headers.frameOptions(x -> x.sameOrigin()));
 			http.csrf(csrf -> csrf.disable());
 			http.authorizeHttpRequests(autorize -> {
-				autorize.requestMatchers("/").permitAll()
-						.requestMatchers("/api/**").permitAll()
-						.requestMatchers("/ui/**").permitAll()
-						.requestMatchers("/webjars/**").permitAll()
-						.requestMatchers("/npm/**").permitAll()
-						.requestMatchers("/error").permitAll()
-						.requestMatchers("/h2-console/**").permitAll()
-						.requestMatchers("/download/**").permitAll()
-						.requestMatchers("/actuator/**").permitAll()
-						.requestMatchers("/swagger-ui.html").permitAll()
-						.requestMatchers("/swagger-ui/**").permitAll()
-						.requestMatchers("/api-docs/**").permitAll()
-						.requestMatchers("/v3/**").permitAll();
+				autorize.requestMatchers(mvc.matchers("/", "/api/**", "/ui/**", "/webjars/**", "/npm/**", "/error",
+						"/h2-console/**", "/download/**", "/actuator/**", "/swagger-ui.html", "/swagger-ui/**",
+						"/api-docs/**", "/v3/**")).permitAll();
 				secutiryConfig.configure(autorize);
 			});
 			secutiryConfig.configure(http);

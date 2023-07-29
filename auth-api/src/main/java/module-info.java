@@ -37,5 +37,7 @@ module com.ubiqube.etsi.mano.auth {
 	requires transitive jakarta.servlet;
 	//
 	requires transitive com.fasterxml.jackson.databind;
+	requires spring.webmvc;
+	requires spring.beans;
 
 }
