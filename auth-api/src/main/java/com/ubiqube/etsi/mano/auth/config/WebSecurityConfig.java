@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.switchuser.SwitchUserFilter;
 
 import com.ubiqube.etsi.mano.auth.AuthException;
 import com.ubiqube.etsi.mano.auth.RequestMatcherBuilder;
@@ -30,9 +31,11 @@ import com.ubiqube.etsi.mano.auth.RequestMatcherBuilder;
 public class WebSecurityConfig {
 
 	private final SecutiryConfig secutiryConfig;
+	private final TenantExtrator tenantExtrator;
 
-	public WebSecurityConfig(final SecutiryConfig secutiryConfig) {
+	public WebSecurityConfig(final SecutiryConfig secutiryConfig, final TenantExtrator tenantExtrator) {
 		this.secutiryConfig = secutiryConfig;
+		this.tenantExtrator = tenantExtrator;
 	}
 
 	/**
@@ -50,7 +53,7 @@ public class WebSecurityConfig {
 				secutiryConfig.configure(autorize);
 			});
 			secutiryConfig.configure(http);
-
+			http.addFilterAfter(new TenantExtractorFilter(tenantExtrator), SwitchUserFilter.class);
 			return http.build();
 		} catch (final Exception e) {
 			throw new AuthException(e);

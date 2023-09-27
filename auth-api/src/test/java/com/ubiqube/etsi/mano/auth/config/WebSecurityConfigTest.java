@@ -53,11 +53,13 @@ class WebSecurityConfigTest {
 	private CsrfConfigurer<HttpSecurity> csrf;
 	@Mock
 	private RequestMatcherBuilder mvc;
+	@Mock
+	private TenantExtrator tenantExtrator;
 
 	@Test
 	void testCsrf() throws Exception {
 		final SecutiryConfig sc = new TestSecutiryConfig();
-		final WebSecurityConfig wc = new WebSecurityConfig(sc);
+		final WebSecurityConfig wc = new WebSecurityConfig(sc, tenantExtrator);
 		final ArgumentCaptor<Customizer<HeadersConfigurer<HttpSecurity>>> cust = ArgumentCaptor.forClass(Customizer.class);
 		when(http.headers(cust.capture())).thenReturn(http);
 		//
@@ -84,7 +86,7 @@ class WebSecurityConfigTest {
 	void testThrow() throws Exception {
 		final SecutiryConfig sc = new TestSecutiryConfig();
 		sc.getSwaggerSecurityScheme(null);
-		final WebSecurityConfig wc = new WebSecurityConfig(sc);
+		final WebSecurityConfig wc = new WebSecurityConfig(sc, tenantExtrator);
 		final ArgumentCaptor<Customizer<CsrfConfigurer<HttpSecurity>>> cap01 = ArgumentCaptor.forClass(Customizer.class);
 		when(http.csrf(cap01.capture())).thenThrow(Exception.class);
 		assertThrows(AuthException.class, () -> wc.configure(http, mvc));
