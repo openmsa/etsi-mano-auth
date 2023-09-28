@@ -89,4 +89,12 @@ class KeycloakAuthTest {
 		final KeycloakAuth kca = new KeycloakAuth(http403);
 		assertEquals(SecurityType.OAUTH2, kca.getSecurityType());
 	}
+
+	@Test
+	void testConfigure2() {
+		final KeycloakAuth kca = new KeycloakAuth(http403);
+		when(http.anyRequest()).thenReturn(authUrl);
+		kca.configure(http);
+		assertTrue(true);
+	}
 }
