@@ -22,6 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+import java.net.URI;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -75,7 +77,10 @@ class KeycloakAuthTest {
 	@Test
 	void testSwagger() throws Exception {
 		final KeycloakAuth kca = new KeycloakAuth(http403);
-		kca.getSwaggerSecurityScheme(new ManoProperties());
+		final ManoProperties props = new ManoProperties();
+		props.setFrontendUrl(URI.create("http://localhost/"));
+		props.setSwaggerOAuth2(URI.create("http://localhost/"));
+		kca.getSwaggerSecurityScheme(props);
 		assertTrue(true);
 	}
 
