@@ -73,8 +73,8 @@ public class KeycloakAuth implements SecutiryConfig {
 
 	@Override
 	public SecurityScheme getSwaggerSecurityScheme(final ManoProperties oauth2Params) {
-		final OAuthFlow clientCredential = new OAuthFlow().authorizationUrl(oauth2Params.getSwaggerOAuth2())
-				.tokenUrl(oauth2Params.getSwaggerOAuth2());
+		final OAuthFlow clientCredential = new OAuthFlow().authorizationUrl(oauth2Params.getSwaggerOAuth2().toString())
+				.tokenUrl(oauth2Params.getSwaggerOAuth2().toString());
 		final OAuthFlows flows = new OAuthFlows().clientCredentials(clientCredential);
 		return new SecurityScheme()
 				.type(SecurityScheme.Type.OAUTH2)
