@@ -30,7 +30,7 @@ public class TenantHolder {
 	}
 
 	public static void setTenantId(final String tenantId) {
-		LOG.debug("Setting tenantId to {}", tenantId);
+		LOG.trace("Setting tenantId to {}", tenantId);
 		currentTenant.set(tenantId);
 	}
 
