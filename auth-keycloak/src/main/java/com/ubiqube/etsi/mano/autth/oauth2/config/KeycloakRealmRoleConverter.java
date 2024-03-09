@@ -27,6 +27,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 
+import com.ubiqube.etsi.mano.auth.AuthException;
+
 /**
  *
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
@@ -37,6 +39,9 @@ public class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<Gra
 	@Override
 	public Collection<GrantedAuthority> convert(final Jwt jwt) {
 		final Map<String, List<String>> realmAccess = (Map<String, List<String>>) jwt.getClaims().get("realm_access");
+		if (null == realmAccess) {
+			throw new AuthException("Unable to find 'realm_access' in token.");
+		}
 		return realmAccess.get("roles").stream()
 				.map(roleName -> "ROLE_" + roleName.toUpperCase(Locale.ENGLISH))
 				.map(SimpleGrantedAuthority::new)
