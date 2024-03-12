@@ -20,8 +20,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
 
@@ -32,18 +34,20 @@ import com.ubiqube.etsi.mano.auth.AuthException;
  * @author Olivier Vignaud {@literal <ovi@ubiqube.com>}
  *
  */
-public class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<SimpleGrantedAuthority>> {
+public class KeycloakRealmRoleConverter implements Converter<Jwt, Collection<GrantedAuthority>> {
 
 	@Override
-	public Collection<SimpleGrantedAuthority> convert(final Jwt jwt) {
+	public Collection<GrantedAuthority> convert(final Jwt jwt) {
 		final Map<String, List<String>> realmAccess = (Map<String, List<String>>) jwt.getClaims().get("realm_access");
 		if (null == realmAccess) {
 			throw new AuthException("Unable to find 'realm_access' in token.");
 		}
+		// Don't change into toList() methods, we have to stick to a
+		// Collection<GrantedAuthority>.
 		return realmAccess.get("roles").stream()
 				.map(roleName -> "ROLE_" + roleName.toUpperCase(Locale.ENGLISH))
 				.map(SimpleGrantedAuthority::new)
-				.toList();
+				.collect(Collectors.toList());
 	}
 
 }
