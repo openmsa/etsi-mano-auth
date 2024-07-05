@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.autth.oauth2.config;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.util.Collection;
@@ -30,6 +31,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.Jwt;
+
+import com.ubiqube.etsi.mano.auth.AuthException;
 
 @ExtendWith(MockitoExtension.class)
 class KeycloakRealmRoleConverterTest {
@@ -47,6 +50,12 @@ class KeycloakRealmRoleConverterTest {
 		assertEquals(1, res.size());
 		final GrantedAuthority n = res.iterator().next();
 		assertEquals("ROLE_MYROLE", n.getAuthority());
+	}
+
+	@Test
+	void testRealmNull() {
+		final KeycloakRealmRoleConverter conv = new KeycloakRealmRoleConverter();
+		assertThrows(AuthException.class, () -> conv.convert(jwt));
 	}
 
 }
