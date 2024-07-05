@@ -75,7 +75,7 @@ class KeycloakAuthTest {
 	}
 
 	@Test
-	void testSwagger() throws Exception {
+	void testSwagger() {
 		final KeycloakAuth kca = new KeycloakAuth(http403);
 		final ManoProperties props = new ManoProperties();
 		props.setFrontendUrl(URI.create("http://localhost/"));
@@ -85,7 +85,7 @@ class KeycloakAuthTest {
 	}
 
 	@Test
-	void testSecurityType() throws Exception {
+	void testSecurityType() {
 		final KeycloakAuth kca = new KeycloakAuth(http403);
 		assertEquals(SecurityType.OAUTH2, kca.getSecurityType());
 	}

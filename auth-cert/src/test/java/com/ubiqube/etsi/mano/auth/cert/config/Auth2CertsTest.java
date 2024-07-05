@@ -37,6 +37,7 @@ import com.ubiqube.etsi.mano.auth.AuthException;
 import com.ubiqube.etsi.mano.auth.config.SecurityType;
 
 @ExtendWith(MockitoExtension.class)
+@SuppressWarnings("static-method")
 class Auth2CertsTest {
 	@Mock
 	private AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry http;
@@ -68,14 +69,14 @@ class Auth2CertsTest {
 	}
 
 	@Test
-	void testSwagger() throws Exception {
+	void testSwagger() {
 		final Auth2Certs ac = new Auth2Certs();
 		ac.getSwaggerSecurityScheme(null);
 		assertTrue(true);
 	}
 
 	@Test
-	void testScutiryType() throws Exception {
+	void testScutiryType() {
 		final Auth2Certs ac = new Auth2Certs();
 		assertEquals(SecurityType.CERT, ac.getSecurityType());
 		assertTrue(true);

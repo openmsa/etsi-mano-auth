@@ -56,14 +56,14 @@ class CertProxySecutiryConfigTest {
 	}
 
 	@Test
-	void testSwagger() throws Exception {
+	void testSwagger() {
 		final CertProxySecutiryConfig cert = new CertProxySecutiryConfig();
 		cert.getSwaggerSecurityScheme(null);
 		assertTrue(true);
 	}
 
 	@Test
-	void testServerType() throws Exception {
+	void testServerType() {
 		final CertProxySecutiryConfig cert = new CertProxySecutiryConfig();
 		assertEquals(SecurityType.CERT, cert.getSecurityType());
 	}

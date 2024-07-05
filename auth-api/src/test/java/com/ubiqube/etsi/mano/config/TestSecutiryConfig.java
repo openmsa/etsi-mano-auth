@@ -23,7 +23,6 @@ public class TestSecutiryConfig implements SecutiryConfig {
 
 	@Override
 	public SecurityType getSecurityType() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

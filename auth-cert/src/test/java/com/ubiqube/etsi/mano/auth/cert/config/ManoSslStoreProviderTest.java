@@ -31,7 +31,7 @@ class ManoSslStoreProviderTest {
 	private DataSource ds;
 
 	@Test
-	void testKeyStore() throws Exception {
+	void testKeyStore() {
 		final ManoSslStoreProvider ssl = new ManoSslStoreProvider(ds);
 		ssl.getKey();
 		ssl.getManagers();

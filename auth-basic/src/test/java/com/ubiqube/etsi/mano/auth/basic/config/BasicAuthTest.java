@@ -70,8 +70,6 @@ class BasicAuthTest {
 	@Test
 	void testConfigure() throws Exception {
 		final BasicAuth ba = new BasicAuth(http403);
-		// when(http.anyRequest()).thenReturn(authUrl);
-		// when(authUrl.authenticated()).thenReturn(AutMngrReqMatchReg);
 		final ArgumentCaptor<Customizer<HttpBasicConfigurer<HttpSecurity>>> arg = ArgumentCaptor.forClass(Customizer.class);
 		when(httpSecurity.httpBasic(arg.capture())).thenReturn(httpSecurity);
 		final ArgumentCaptor<Customizer<CsrfConfigurer<HttpSecurity>>> arg2 = ArgumentCaptor.forClass(Customizer.class);
