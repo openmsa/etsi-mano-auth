@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano.auth</groupId>
 		<artifactId>mano-auth-aggregator</artifactId>
-		<version>4.0.0</version>
+		<version>4.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>auth-cert</artifactId>
 	<dependencies>
