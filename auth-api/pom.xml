@@ -85,7 +85,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano</groupId>
 			<artifactId>mano-spring-properties</artifactId>
-			<version>${version.ubi-spring-config}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
