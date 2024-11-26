@@ -36,7 +36,6 @@
 		<dependency>
 			<groupId>com.ubiqube.mano.auth</groupId>
 			<artifactId>auth-api</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.validation</groupId>
