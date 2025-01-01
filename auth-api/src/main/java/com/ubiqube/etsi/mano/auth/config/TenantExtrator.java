@@ -16,7 +16,7 @@
  */
 package com.ubiqube.etsi.mano.auth.config;
 
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 import jakarta.servlet.ServletRequest;
 
 /**

@@ -22,7 +22,7 @@ import org.springframework.security.config.annotation.web.configurers.AuthorizeH
 import com.ubiqube.etsi.mano.config.properties.ManoProperties;
 
 import io.swagger.v3.oas.models.security.SecurityScheme;
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 /**
  *

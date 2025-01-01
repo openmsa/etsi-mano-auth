@@ -23,6 +23,7 @@ module com.ubiqube.etsi.mano.auth {
 	//
 	requires lombok;
 	requires org.slf4j;
+	requires org.jspecify;
 	requires transitive io.swagger.v3.oas.models;
 	requires jakarta.annotation;
 	// Spring
