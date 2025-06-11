@@ -39,7 +39,7 @@ public class RequestMatcherBuilder {
 	public PathPatternRequestMatcher[] matchers(final String... patterns) {
 		final PathPatternRequestMatcher[] matchers = new PathPatternRequestMatcher[patterns.length];
 		for (int index = 0; index < patterns.length; index++) {
-			matchers[index] = PathPatternRequestMatcher.withDefaults().matcher(servletPath);
+			matchers[index] = PathPatternRequestMatcher.withDefaults().matcher(patterns[index]);
 		}
 		return matchers;
 	}

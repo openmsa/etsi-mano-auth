@@ -31,7 +31,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import com.ubiqube.etsi.mano.auth.AuthException;
 import com.ubiqube.etsi.mano.auth.RequestMatcherBuilder;
@@ -68,9 +69,9 @@ class WebSecurityConfigTest {
 		//
 		final ArgumentCaptor<Customizer<AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry>> authorizeHttpRequestsCustomizer = ArgumentCaptor.forClass(Customizer.class);
 		when(http.authorizeHttpRequests(authorizeHttpRequestsCustomizer.capture())).thenReturn(http);
-		when(amrmr.requestMatchers(any(MvcRequestMatcher[].class))).thenReturn(au);
+		when(amrmr.requestMatchers(any(RequestMatcher[].class))).thenReturn(au);
 		when(au.permitAll()).thenReturn(amrmr);
-		when(mvc.matchers(any(String[].class))).thenReturn(new MvcRequestMatcher[0]);
+		when(mvc.matchers(any(String[].class))).thenReturn(new PathPatternRequestMatcher[0]);
 		wc.configure(http, mvc);
 		when(amrmr.anyRequest()).thenReturn(au);
 		cap01.getValue().customize(csrf);

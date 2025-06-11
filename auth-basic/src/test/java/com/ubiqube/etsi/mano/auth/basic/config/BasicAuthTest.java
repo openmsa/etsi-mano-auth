@@ -47,7 +47,7 @@ class BasicAuthTest {
 	@Mock
 	private AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizedUrl authUrl;
 	@Mock
-	private AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry AutMngrReqMatchReg;
+	private AuthorizeHttpRequestsConfigurer<HttpSecurity>.AuthorizationManagerRequestMatcherRegistry autMngrReqMatchReg;
 	@Mock
 	private HttpSecurity httpSecurity;
 	@Mock
