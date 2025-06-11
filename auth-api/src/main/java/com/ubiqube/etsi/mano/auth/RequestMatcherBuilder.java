@@ -17,7 +17,7 @@
 package com.ubiqube.etsi.mano.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
@@ -36,13 +36,10 @@ public class RequestMatcherBuilder {
 		this.servletPath = servletPath;
 	}
 
-	public MvcRequestMatcher[] matchers(final String... patterns) {
-		final MvcRequestMatcher[] matchers = new MvcRequestMatcher[patterns.length];
+	public PathPatternRequestMatcher[] matchers(final String... patterns) {
+		final PathPatternRequestMatcher[] matchers = new PathPatternRequestMatcher[patterns.length];
 		for (int index = 0; index < patterns.length; index++) {
-			matchers[index] = new MvcRequestMatcher(this.introspector, patterns[index]);
-			if (this.servletPath != null) {
-				matchers[index].setServletPath(this.servletPath);
-			}
+			matchers[index] = PathPatternRequestMatcher.withDefaults().matcher(servletPath);
 		}
 		return matchers;
 	}
